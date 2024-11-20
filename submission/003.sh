@@ -1,5 +1,5 @@
 # How many new outputs were created by block 123,456?
-txs=$(bitcoin-cli getblockhash 123456 | xargs bitcoin-cli getblock | jq '.tx.[]')
+txs=$(bitcoin-cli getblockhash 123456 | xargs bitcoin-cli getblock | jq '.tx | .[]')
 # echo "Transactions:\n$txs"
 n_outputs=0
 for i in $txs
