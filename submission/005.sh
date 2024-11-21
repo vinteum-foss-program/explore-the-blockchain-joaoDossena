@@ -5,4 +5,3 @@ rawTx=$(bitcoin-cli getrawtransaction "37d966a263350fe747f1c606b159987545844a493
 txinwitnessAddr=$(bitcoin-cli decoderawtransaction $rawTx | jq -r '[.vin | .[] | .txinwitness | .[1]]')
 
 bitcoin-cli createmultisig 1 "$txinwitnessAddr" | jq '.address' | tr -d '"'
-
